@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+
+# 数据集与缓存（体积大，组员本地自行准备）
+data/ModelNet40/
+data/ModelNet40.zip
+data/**/*.zip
+data/**/_cache/
+
+# 训练权重与生成结果
+checkpoints/
+outputs/
+
+# 参考文献等大文件（可选，按需删除此行以纳入版本控制）
+references/
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
