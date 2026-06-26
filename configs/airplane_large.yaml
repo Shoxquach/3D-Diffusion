@@ -7,24 +7,25 @@ beta_schedule: cosine
 
 # Point-E PointDiffusionTransformer (compact: 256w/6L, ~5M params)
 denoiser_type: transformer
-hidden_dim: 384
-num_layers: 8
+hidden_dim: 512
+num_layers: 12
 num_heads: 8
 init_scale: 0.25
 time_token_cond: true
 input_channels: 3
 output_channels: 3
 
-batch_size: 16
+batch_size: 2
+grad_accum_steps: 16
 epochs: 1000
 lr: 0.0001
-weight_decay: 0.01
+weight_decay: 0.05
 num_workers: 0
 pin_memory: true
 preload_data: true
 use_amp: true
 tf32: true
-cudnn_benchmark: true
-save_dir: checkpoints
-save_every: 10
+cudnn_benchmark: false  # avoid autotune memory spikes on large sequences
+save_dir: checkpoints2
+save_every: 25
 device: cuda

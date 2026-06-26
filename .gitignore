@@ -14,6 +14,7 @@ data/**/_cache/
 
 # 训练权重与生成结果
 checkpoints/
+checkpoints*/
 outputs/
 
 # 参考文献等大文件（可选，按需删除此行以纳入版本控制）

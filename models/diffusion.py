@@ -119,6 +119,7 @@ class GaussianDiffusion(nn.Module):
 
             alpha_bar_t = self.alphas_cumprod[t]
             x0_pred = (x - torch.sqrt(1 - alpha_bar_t) * pred_noise) / torch.sqrt(alpha_bar_t)
+            x0_pred = torch.clamp(x0_pred, -1.0, 1.0)
 
             if i == len(times) - 1:
                 x = x0_pred

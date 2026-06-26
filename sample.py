@@ -8,7 +8,7 @@ from pathlib import Path
 import numpy as np
 import torch
 
-from models.denoiser import PointCloudDenoiser
+from models.denoiser import build_denoiser
 from models.diffusion import GaussianDiffusion
 
 
@@ -46,10 +46,8 @@ def main() -> None:
     ckpt = torch.load(args.checkpoint, map_location=device, weights_only=False)
     cfg = ckpt["config"]
 
-    denoiser = PointCloudDenoiser(
-        num_points=cfg["num_points"],
-        hidden_dim=cfg["hidden_dim"],
-    )
+    denoiser = build_denoiser(cfg)
+    print(f"Denoiser: {cfg.get('denoiser_type', 'transformer')}")
     diffusion = GaussianDiffusion(
         model=denoiser,
         timesteps=cfg["timesteps"],

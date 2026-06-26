@@ -53,7 +53,8 @@ python sample.py --checkpoint checkpoints/latest.pt --num_samples 8 --steps 50 -
 ├── data/dataset.py         # 数据集
 ├── models/
 │   ├── diffusion.py        # DDPM 加噪/去噪
-│   └── denoiser.py         # 点云去噪网络
+│   ├── denoiser.py         # Transformer 去噪网络
+│   └── point_e/            # Point-E 主干实现
 ├── utils/mesh.py           # 网格采样与归一化
 ├── train.py
 ├── sample.py
@@ -62,6 +63,6 @@ python sample.py --checkpoint checkpoints/latest.pt --num_samples 8 --steps 50 -
 
 ## 说明
 
-- 当前为**简化版** PointNet 去噪器，便于先跑通完整流程。
+- 去噪网络为 **Point-E 风格 Transformer**（默认 256 维 / 6 层，约 5M 参数）。
 - 训练损失为预测噪声 MSE；推理默认 DDIM 50 步加速。
-- 完整训练建议 500 epoch 以上，并观察生成点云质量再调参。
+- 完整训练建议 200 epoch 以上，并观察生成点云质量再调参。

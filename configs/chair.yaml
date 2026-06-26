@@ -1,11 +1,11 @@
-category: airplane
+category: chair
 data_root: data/ModelNet40
 split: train
 num_points: 1024
 timesteps: 1000
 beta_schedule: cosine
 
-# Point-E PointDiffusionTransformer (compact: 256w/6L, ~5M params)
+# Point-E PointDiffusionTransformer (384w/8L)
 denoiser_type: transformer
 hidden_dim: 384
 num_layers: 8
@@ -25,6 +25,6 @@ preload_data: true
 use_amp: true
 tf32: true
 cudnn_benchmark: true
-save_dir: checkpoints
-save_every: 10
+save_dir: checkpoints_chair
+save_every: 50
 device: cuda
